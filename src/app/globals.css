@@ -1,26 +1,100 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --text-light: #666666;
+  --border-color: #e0e0e0;
+  --color-orange: #E06F2B;
+  --color-magenta: #ED00AC;
+  --color-blue: #0500C3;
+  --sidebar-pad: 80px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 11px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 1;
+}
+
+::selection {
+  background-color: rgba(237, 0, 172, 0.15);
+}
+
+/* Header */
+.page-header {
+  padding: 30px 60px 20px;
+  padding-left: var(--sidebar-pad);
+}
+
+/* Layout classes */
+.page-main {
+  flex: 1;
+  display: flex;
+  padding: 40px 60px 60px;
+  gap: 0;
+  width: 100%;
+}
+
+.page-sidebar {
+  flex: 0 0 46%;
+  padding-top: 20px;
+  padding-left: 20px;
+  font-size: 11px;
+}
+
+.page-content {
+  flex: 1;
+  max-width: 700px;
+  padding-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 20px 24px 15px;
+  }
+
+  .page-main {
+    flex-direction: column;
+    padding: 20px 24px 40px;
+    gap: 24px;
+  }
+
+  .page-sidebar {
+    flex: unset;
+    padding-left: 0;
+    padding-top: 0;
+  }
+
+  .page-content {
+    max-width: 100%;
+    padding-top: 0;
+  }
+
+  .article-detail-main {
+    padding: 20px 24px 40px !important;
+  }
 }
